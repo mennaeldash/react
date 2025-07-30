@@ -1,15 +1,78 @@
 import React, { useState } from 'react'
+import Item from '../Item';
+import '../all.css';
+
 
 const Home = () => {
-    let [counter, setCounter] = useState(0)
-    function Increse(param) {
-        setCounter(counter + param)
 
+
+    let productArray = [
+        {
+            id: 1,
+            phone: "iphone",
+            price: 3000,
+            desc: "good",
+            counter: 0,
+        },
+        {
+            id: 2,
+            phone: "iphone",
+            price: 3000,
+            desc: "good",
+            counter: 0,
+        },
+        {
+            id: 3,
+            phone: "iphone",
+            price: 3000,
+            desc: "good",
+            counter: 0,
+        },
+        {
+            id: 4,
+            phone: "iphone",
+            price: 3000,
+            desc: "good",
+            counter: 0,
+        },
+        {
+            id: 5,
+            phone: "iphone",
+            price: 3000,
+            desc: "good",
+            counter: 0,
+        },
+        {
+            id: 6,
+            phone: "iphone",
+            price: 3000,
+            desc: "good",
+            counter: 0,
+        },
+        {
+            id: 7,
+            phone: "iphone",
+            price: 3000,
+            desc: "good",
+            counter: 0,
+        },
+
+    ]
+    let [products, setProducts] = useState(productArray);
+    function deletProd(prodId) {
+        let newPro = products.filter((product) => product.id !== prodId);
+        setProducts(newPro)
     }
+
+
     return (
         <>
-            <h1>counter:  {counter}</h1>
-            <button className='btn' onClick={function () { Increse(1) }}>submit</button>
+            <div className="products">
+                {products.map((product) => (
+                    <Item key={product.id} product={product} deletProd={deletProd} />
+                ))}
+
+            </div>
 
         </>
     )
